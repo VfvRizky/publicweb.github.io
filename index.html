@@ -174,8 +174,8 @@
     </div>
     
     <div class="container">
-        <button class="masuk" onclick="openModal('Masuk')">Masuk</button>
-        <button class="pulang" onclick="openModal('Pulang')">Pulang</button>
+        <button class="masuk" onclick="openModal('Masuk')">Click Absen</button>
+        <button class="pulang" onclick="openModal('Pulang')">Cek Absen Hari ini🔎</button>
     </div>
 
     <footer>
@@ -188,8 +188,8 @@
         <!-- Modal content -->
         <div class="modal-content">
             <button class="close" onclick="closeModal()">&times;</button>
-            <button class="modal-button masuk" id="absenMasukButton">Absen Masuk</button>
-            <button class="modal-button pulang" id="absenPulangButton">Absen Pulang</button>
+            <button class="modal-button masuk" id="absenMasukButton">Click untuk Absen</button>
+            <button class="modal-button pulang" id="absenPulangButton">Click untuk Lihat Absen</button>
         </div>
 
     </div>
@@ -203,11 +203,11 @@
             if (action === 'Masuk') {
                 absenMasukButton.style.display = "block";
                 absenPulangButton.style.display = "none";
-                absenMasukButton.setAttribute('onclick', 'window.location.href="https://forms.gle/WQMHh2nk7pjeJAuj7"');
+                absenMasukButton.setAttribute('onclick', 'window.location.href="https://forms.gle/7M8tfAVCj252Pjxz6"');
             } else if (action === 'Pulang') {
                 absenPulangButton.style.display = "block";
                 absenMasukButton.style.display = "none";
-                absenPulangButton.setAttribute('onclick', 'window.location.href="https://forms.gle/RMm7G9Py3XpjWxtF8"');
+                absenPulangButton.setAttribute('onclick', 'window.location.href="https://docs.google.com/spreadsheets/d/1RIPBfyo5unN2LR-b7Y1ExzqJUi4T9dP9ZGDrc2nPhbk/edit#gid=442193084"');
             }
 
             modal.style.display = "block";
