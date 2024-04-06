@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Pegawai - Beta Ver.</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 0 10px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .masuk {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .masuk:hover {
+            background-color: #45a049;
+        }
+
+        .pulang {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .pulang:hover {
+            background-color: #d32f2f;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #111;
+        }
+
+        .live-time {
+            display: inline-block;
+        }
+
+        /* Style the modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+            animation: modal-animation 0.3s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* Animation to open the modal */
+        @keyframes modal-animation {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Set modal button background color */
+        .modal-button {
+            margin-top: 20px;
+            background-color: inherit;
+            color: inherit;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 20px 40px;
+            font-size: 24px;
+            outline: none;
+        }
+
+        /* Adjust modal button color based on button clicked */
+        .modal-button.masuk {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .modal-button.pulang {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="https://docs.google.com/spreadsheets/d/1RIPBfyo5unN2LR-b7Y1ExzqJUi4T9dP9ZGDrc2nPhbk/edit?usp=sharing">Absensi Pegawai</a>
+        <a href="#" class="live-time">00:00:00</a>
+    </div>
+    
+    <div class="container">
+        <button class="masuk" onclick="openModal('Masuk')">Masuk</button>
+        <button class="pulang" onclick="openModal('Pulang')">Pulang</button>
+    </div>
+
+    <footer>
+        <a href="https://docs.google.com/spreadsheets/d/1RIPBfyo5unN2LR-b7Y1ExzqJUi4T9dP9ZGDrc2nPhbk/edit?usp=sharing" target="_blank">Cek disini untuk melihat absensi hari ini 🔎</a>
+    </footer>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">&times;</button>
+            <button class="modal-button masuk" id="absenMasukButton">Absen Masuk</button>
+            <button class="modal-button pulang" id="absenPulangButton">Absen Pulang</button>
+        </div>
+
+    </div>
+
+    <script>
+        function openModal(action) {
+            var modal = document.getElementById("myModal");
+            var absenMasukButton = document.getElementById("absenMasukButton");
+            var absenPulangButton = document.getElementById("absenPulangButton");
+
+            if (action === 'Masuk') {
+                absenMasukButton.style.display = "block";
+                absenPulangButton.style.display = "none";
+                absenMasukButton.setAttribute('onclick', 'window.location.href="https://forms.gle/WQMHh2nk7pjeJAuj7"');
+            } else if (action === 'Pulang') {
+                absenPulangButton.style.display = "block";
+                absenMasukButton.style.display = "none";
+                absenPulangButton.setAttribute('onclick', 'window.location.href="https://forms.gle/RMm7G9Py3XpjWxtF8"');
+            }
+
+            modal.style.display = "block";
+            modal.classList.remove("modal-hidden");
+
+            // Menambahkan event listener ke latar belakang modal
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.classList.add("modal-hidden");
+            setTimeout(function() {
+                modal.style.display = "none";
+            }, 300);
+        }
+
+        function updateLiveTime() {
+            // Menggunakan waktu saat ini
+            let now = new Date();
+
+            // Mendapatkan tanggal, bulan, dan tahun saat ini
+            const dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+            const day = now.getDay();
+            const date = now.getDate();
+            const month = now.getMonth();
+            const year = now.getFullYear();
+
+            // Mendapatkan waktu dalam format hh:mm:ss
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            // Menampilkan waktu, hari, dan tanggal bulan
+            const currentTime = `${hours}:${minutes}:${seconds} ${dayNames[day]} ${date}/${monthNames[month]} ${year}`;
+            document.querySelector('.live-time').textContent = currentTime;
+        }
+
+        // Update live time every second
+        setInterval(updateLiveTime, 1000);
+
+        // Initial call to set time immediately
+        updateLiveTime();
+    </script>
+</body>
+</html>
