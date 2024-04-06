@@ -2,4 +2,4 @@
 Public web for reach across device
 
 to access
-https://publicweb.github.io
+https://vfvrizky.github.io/publicweb.github.io/
